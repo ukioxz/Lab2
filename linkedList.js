@@ -1,3 +1,9 @@
+class ListNode{
+  constructor(data, next = null){
+    this.data = data;
+    this.next = next;
+  }
+}
 class CircularList{
   constructor(){
     this.head = null;
@@ -28,43 +34,74 @@ class CircularList{
     return counter;
   }
 
+  insert(element, index){
+    if (index < 0 || index > this.getLength())
+        return console.log("Please enter a valid index.");
+    else {
+        let node = new ListNode(element);
+        let curr, prev;
+        curr = this.head;
+
+        if (index == 0) {
+            node.next = this.head;
+            this.head = node;
+        } else {
+            curr = this.head;
+            let count = 0;
+
+            while (count < index) {
+                count++;
+                prev = curr;
+                curr = curr.next;
+            }
+
+            node.next = curr;
+            prev.next = node;
+        }
+    }
+}
+
+
   findFirst(data){
-  let curEl = this.head;
-  while(curEl){
-    if(data !== undefined && curEl.data === data){
-      return curEl;
-    }
-    curEl = curEl.next;
-  }
-  return null;
-}
-
-get(index){
-  if (index < 0 || index >= this.getLength()) {
-    throw new Error("Invalid index");
-  }
-  let tmp = this.head;
-      for(let i = 0; i < this.getLength(); i++){
-          if(i === index) return tmp.data;
-
-          tmp = tmp.next;
+    let count = 0;
+    let curEl = this.head;
+    while(curEl){
+      if(data !== undefined && curEl.data === data){
+        return count;
       }
-}
-findLast(data){
-  let curEl = this.tail;
-  while(curEl){
-    if(data !== undefined && curEl.data === data){
-      return curEl;
+      count++;
+      curEl = curEl.next;
     }
-    curEl = curEl.prev;
+    return null;
   }
-  return null;
-}
+
+  get(index){
+    if (index < 0 || index >= this.getLength()) {
+      throw new Error("Invalid index");
+    }
+    let tmp = this.head;
+        for(let i = 0; i < this.getLength(); i++){
+            if(i === index) return tmp.data;
+
+            tmp = tmp.next;
+        }
+  }
+
+  findLast(data){
+    let curEl = this.tail;
+    while(curEl){
+      if(data !== undefined && curEl.data === data){
+        return curEl;
+      }
+      curEl = curEl.next;
+    }
+    return -1;
+  }
 
   clone(){
-    const newCircularList = new CircularList();
+    let newCircularList = new CircularList();
     let curEl = this.head;
-    for(let i = 0; i < this.length; i++){
+    for(let i = 0; i < this.getLength(); i++){
       newCircularList.append(curEl.data);
       curEl = curEl.next;
     }
@@ -72,31 +109,57 @@ findLast(data){
   }
 
   deleteAll(key) {
-  if (this.head == null)
-  {
-    console.log("Empty linked list");
-    return;
-  }
-  var temp = this.head;
-  var prev = null;
-  if (temp.data == key)
-  {
-    if (temp.next == temp)
+    if (this.head == null)
     {
-      this.head = null;
+      console.log("Empty linked list");
+      return;
     }
-    else
+    let temp = this.head;
+    let prev = null;
+    if (temp.data == key)
     {
-      while (temp.next != this.head)
+      if (temp.next == temp)
       {
-        temp = temp.next;
+        this.head = null;
       }
-      temp.next = this.head.next;
-      prev = this.head;
-      this.head = prev.next;
+      else
+      {
+        while (temp.next != this.head)
+        {
+          temp = temp.next;
+        }
+        temp.next = this.head.next;
+        prev = this.head;
+        this.head = prev.next;
+      }
     }
   }
-}
+
+  delete(index){
+    if(index > 0 && index > this.getLength()){
+      return;
+    }
+    let current = this.head;
+    let previous;
+    let count = 0;
+
+    for(let i = 0; i < this.getLength(); i++){
+        if(i === index) return current.data;
+
+        current = current.next;
+    }
+
+    if(index === 0){
+      this.head = current.next;
+    } else {
+      while(count < index) {
+        count++;
+        previous = current;
+        current = current.next;
+      }
+      previous.next = current.next;
+    }
+  }
 
   reverse(){
     let curEl = this.head;
@@ -113,6 +176,7 @@ findLast(data){
       curEl.next = backEl;
     }
     this.head = curEl;
+
   }
 
   clear() {
@@ -120,6 +184,32 @@ findLast(data){
    this.tail = null;
    this.length = 0;
   }
+
 }
 
 const list = new CircularList();
+list.append("A");
+list.append("B");
+list.append("C")
+list.append("E")
+list.append("B")
+list.append(2)
+//list.findFirst("A")
+//list.findLast("B")
+//console.log(list.findFirst("B"))
+//console.log(list.findLast("B"));
+//list.getLength();
+//list.deleteAll("A")
+//list.clear();
+list.insert(3, 1);
+//console.log(list.delete(0))
+//console.log(list.findFirst("t"));
+//console.log(list.get(2))
+
+//console.log(list.findFirst(2));
+//list.reverse();
+console.log(list.delete(0));
+//console.log(list.get(0));
+//console.log(list.clone());
+console.log(list.getLength());
+console.log(list);
