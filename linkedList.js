@@ -162,20 +162,22 @@ class CircularList{
   }
 
   reverse(){
-    let curEl = this.head;
-    let backEl = null;
-    let nextEl = null;
-    while(curEl != null && curEl.next != this.head){
-      nextEl = curEl;
-      curEl = curEl.next;
-      nextEl.next = backEl;
-      backEl = nextEl;
-    }
-    this.head.next = curEl;
-    if(backEl != null){
-      curEl.next = backEl;
-    }
-    this.head = curEl;
+   let backHead = this.head;
+   let currEl = null;
+   let backEl = this.tail;
+   let nextEl = this.head.next;
+
+   while(currEl !== this.head){
+       if(currEl === null) currEl = this.head;
+
+       currEl.next = backEl;
+       backEl = currEl;
+       currEl = nextEl;
+       nextEl = currEl.next;
+   }
+
+   this.head = this.tail;
+   this.tail = backHead;
 
   }
 
@@ -201,14 +203,14 @@ list.append(2)
 //list.getLength();
 //list.deleteAll("A")
 //list.clear();
-list.insert(3, 1);
+//list.insert(3, 1);
 //console.log(list.delete(0))
 //console.log(list.findFirst("t"));
 //console.log(list.get(2))
 
 //console.log(list.findFirst(2));
-//list.reverse();
-console.log(list.delete(0));
+list.reverse();
+//console.log(list.delete(0));
 //console.log(list.get(0));
 //console.log(list.clone());
 console.log(list.getLength());
