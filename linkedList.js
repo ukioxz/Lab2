@@ -25,11 +25,19 @@ class CircularList{
   getLength(){
     let counter = 0;
     let node = this.head;
-    if(this.head != null){
-      do{
+    while(true){
+    if(this.head === null){
+      counter += 0;
+      break;
+    }
+    if(node === this.tail){
+      counter += 1;
+      break;
+    }
+
         node = node.next;
         counter++;
-      } while (node != this.head);
+
     }
     return counter;
   }
@@ -217,10 +225,12 @@ list.append("C")
 list.append("E")
 list.append("B")
 list.append(2)
+const list2 = new CircularList();
+list2.append("W");
 //list.findFirst("A")
 //list.findLast("B")
-console.log(list.findFirst("B"))
-console.log(list.findLast("B"));
+//console.log(list.findFirst("B"))
+//console.log(list.findLast("B"));
 //list.getLength();
 //list.deleteAll("A")
 //list.clear();
@@ -234,6 +244,9 @@ console.log(list.findLast("B"));
 //console.log(list.delete(0));
 //console.log(list.get(0));
 //console.log(list.clone());
-//console.log(list.getLength());
-//console.log(list.extend(list2));
-console.log(list);
+
+//list.extend(list2);
+//console.log(list.getLength())
+//console.log(list);
+
+module.exports = {CircularList};
