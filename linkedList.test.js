@@ -23,3 +23,18 @@ describe('Testing getLength method', () => {
     expect(list.getLength()).toBe(3);
   });
 });
+
+describe('Testing delete method', () => {
+  const list = new CircularList();
+  ['a', 'b', 'c'].forEach(node => list.append(node));
+  test('Should return value of deleted node', () => {
+    expect(list.delete(0)).toBe('a');
+  });
+  test('Should throw an error if incorrect index', () => {
+    expect(list.delete(-1)).toThrow(Error);
+    expect(list.delete(0.3)).toThrow(Error);
+  });
+  test('Should trow an error if index bigger than length of list', () => {
+    expect(list.delete(list.getLength() + 1)).toThrow(Error);
+  });
+});
