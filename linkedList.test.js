@@ -1,8 +1,8 @@
 const { CircularList } = require('./linkedList');
 
-describe('Testing append method', () =>{
+describe('Testing append method', () => {
+  const list = new CircularList();
   test('Should return a new node', () => {
-    const list = new CircularList();
     list.append('a');
     expect(list.get(0)).toBe('a');
   });
@@ -10,5 +10,16 @@ describe('Testing append method', () =>{
     const list = new CircularList();
     list.append('a');
     expect(list.getLength()).toBe(1);
+  });
+});
+
+describe('Testing getLength method', () => {
+  const list = new CircularList();
+  test('Should return a length of an empty list' , () => {
+    expect(list.getLength()).toBe(0);
+  });
+  test('Should return the length of list with three nodes', () => {
+    ['a', 'b', 'c'].forEach(node => list.append(node));
+    expect(list.getLength()).toBe(3);
   });
 });
