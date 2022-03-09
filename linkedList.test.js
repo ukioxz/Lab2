@@ -38,3 +38,20 @@ describe('Testing delete method', () => {
     expect(() => list.delete(list.getLength() + 1)).toThrow(Error);
   });
 });
+
+describe('Testing extend method', () => {
+  const list = new CircularList();
+  list.append('a');
+  list.append('b');
+  const list2 = new CircularList();
+  list2.append('c');
+  test('Should add nodes from one list to the tail of anothe list' , () => {
+    list.extend(list2);
+    expect(list.get(0)).toBe('a');
+    expect(list.get(1)).toBe('b');
+    expect(list.get(2)).toBe('c');
+  });
+   test('Should return a new length of list', () => {
+     expect(list.getLength()).toBe(3);
+   });
+});

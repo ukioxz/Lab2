@@ -241,7 +241,7 @@ list2.append("W");
 //list.deleteAll("A")
 //list.clear();
 //list.insert(3, 1);
-console.log(list.delete(0))
+//console.log(list.delete(0))
 //console.log(list.findFirst("t"));
 //console.log(list.get(2))
 
@@ -251,8 +251,8 @@ console.log(list.delete(0))
 //console.log(list.get(0));
 //console.log(list.clone());
 
-//list.extend(list2);
-//console.log(list.getLength())
+list.extend(list2);
+console.log(list.getLength())
 console.log(list);
 
 module.exports = {CircularList};
