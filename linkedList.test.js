@@ -31,10 +31,10 @@ describe('Testing delete method', () => {
     expect(list.delete(0)).toBe('a');
   });
   test('Should throw an error if incorrect index', () => {
-    expect(list.delete(-1)).toThrow(Error);
-    expect(list.delete(0.3)).toThrow(Error);
+    expect(() => list.delete(-1)).toThrow(Error);
+    expect(() => list.delete(4.3)).toThrow(Error);
   });
   test('Should trow an error if index bigger than length of list', () => {
-    expect(list.delete(list.getLength() + 1)).toThrow(Error);
+    expect(() => list.delete(list.getLength() + 1)).toThrow(Error);
   });
 });

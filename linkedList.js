@@ -157,8 +157,14 @@ class CircularList{
   }
 
   delete(index){
-    if(index > 0 && index > this.getLength()){
-      return;
+    if(typeof index != 'number'){
+      throw new Error ('Incorrect index');
+    }
+    if(index !== Number.isInteger(index) && index < 0){
+      throw new Error ('Incorrect index');
+    }
+    if(index > this.getLength()){
+      throw new Error('Index is bigger than length of list')
     }
     let current = this.head;
     let previous;
@@ -235,7 +241,7 @@ list2.append("W");
 //list.deleteAll("A")
 //list.clear();
 //list.insert(3, 1);
-//console.log(list.delete(0))
+console.log(list.delete(0))
 //console.log(list.findFirst("t"));
 //console.log(list.get(2))
 
@@ -247,6 +253,6 @@ list2.append("W");
 
 //list.extend(list2);
 //console.log(list.getLength())
-//console.log(list);
+console.log(list);
 
 module.exports = {CircularList};
