@@ -55,3 +55,28 @@ describe('Testing extend method', () => {
      expect(list.getLength()).toBe(3);
    });
 });
+
+describe('Testing clear method', () => {
+  const list = new CircularList();
+  list.append('a');
+  list.append('b');
+  test('Should return length of an empty list', () => {
+    list.clear();
+    expect(list.getLength()).toBe(0);
+  });
+});
+
+describe('Testing clone method', () => {
+  const list = new CircularList();
+  list.append('a');
+  list.append('b');
+  test('Should return a copy of a list', () => {
+    const list2 = list.clone();
+    expect(list2.get(0)).toBe(list.get(0));
+    expect(list2.get(1)).toBe(list.get(1));
+  });
+  test('Should return a copy of length of list', () => {
+    const list2 = list.clone();
+    expect(list2.getLength()).toBe(list.getLength());
+  });
+});
