@@ -182,36 +182,4 @@ class CircularList{
   }
 }
 
-
-const list = new CircularList();
-list.append("A");
-list.append("B");
-list.append("C")
-list.append("E")
-list.append("B")
-list.append(2)
-const list2 = new CircularList();
-list2.append("W");
-//list.findFirst("A")
-//list.findLast("B")
-//console.log(list.findFirst("B"))
-//console.log(list.findLast("B"));
-//list.getLength();
-//list.deleteAll("A")
-//list.clear();
-//list.insert(3, -1);
-//console.log(list.delete(0))
-//console.log(list.findFirst("t"));
-//console.log(list.get(2))
-
-//console.log(list.findFirst(2));
-//list.reverse();
-//console.log(list.delete(0));
-//console.log(list.get(0));
-//console.log(list.clone());
-list.deleteAll("B");
-//list.extend(list2);
-console.log(list.getLength())
-console.log(list);
-
 module.exports = {CircularList};

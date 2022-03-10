@@ -157,5 +157,17 @@ describe('Testing deleteAll method', () => {
     expect(list.get(0)).toBe('b');
     expect(list.get(1)).toBe('c');
   });
+});
 
+describe('Testing reverse method', () => {
+  const list = new CircularList();
+  list.append('a');
+  list.append('b');
+  list.append('c');
+  test('Should return a reversed list', () => {
+    list.reverse();
+    expect(list.get(0)).toBe('c');
+    expect(list.get(1)).toBe('b');
+    expect(list.get(2)).toBe('a');
+  });
 });
