@@ -113,3 +113,31 @@ describe('Testing get method', () => {
     expect(list.get(1)).toBe('b');
   });
 });
+
+describe('Testing findFirst method', () => {
+  const list = new CircularList();
+  list.append('a');
+  list.append('b');
+  list.append('a');
+  list.append('c');
+  test('Should return position of the first value', () => {
+    expect(list.findFirst('a')).toBe(0);
+  });
+  test('Should return -1 if data are not in the list', () => {
+    expect(list.findFirst('T')).toBe(-1);
+  });
+});
+
+describe('Testing findLast method', () => {
+  const list = new CircularList();
+  list.append('a');
+  list.append('b');
+  list.append('a');
+  list.append('c');
+  test('Should return position of the last value', () => {
+    expect(list.findLast('a')).toBe(2);
+  });
+  test('Should return -1 if data are not in the list', () => {
+    expect(list.findLast('T')).toBe(-1);
+  });
+});

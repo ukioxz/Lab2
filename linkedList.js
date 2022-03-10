@@ -214,7 +214,7 @@ list2.append("W");
 //list.findFirst("A")
 //list.findLast("B")
 //console.log(list.findFirst("B"))
-/console.log(list.findLast("B"));
+//console.log(list.findLast("B"));
 //list.getLength();
 //list.deleteAll("A")
 //list.clear();
