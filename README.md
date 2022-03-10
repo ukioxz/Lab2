@@ -13,40 +13,40 @@ Circular linked list is a data structure that consist two types of data: value a
 
 Methods implemented:
 
-**append(element: Character)**
+-**append(element: Character)**
 Adding nodes to the end of the list.
 
-**getLength()**
+-**getLength()**
 Defines the length of the list.
 
-**insert(element: Character, index: Integer)**
+-**insert(element: Character, index: Integer)**
 Inserts node at any position.
 
-**delete(index: Integer)**
+-**delete(index: Integer)**
 Deletes node at the particular position.
 
-**deleteAll(element: Character)**
+-**deleteAll(element: Character)**
 Deletes all nodes from the list by value.
 
-**get(index: Integer)**
+-**get(index: Integer)**
 Getting node by particular position.
 
-**clone()**
+-**clone()**
 Creates a copy of the list.
 
-**reverse()**
+-**reverse()**
 Reversing the list.
 
-**findFirst(element: Character)**
+-**findFirst(element: Character)**
 Finds the first node in the list and returns the position.
 
-**findLast(elenent: Character)**
+-**findLast(elenent: Character)**
 Finds the last node in the list and returns the position.
 
-**clear()**
+-**clear()**
 Deletes all nodes in the list.
 
-**extend(elements: List)**
+-**extend(elements: List)**
 Add another list at the end of first list.
 
 ## Setup
@@ -56,7 +56,7 @@ Add another list at the end of first list.
 2. Go to the directory of project and run command:
 
 ```bash
-https://github.com/ukioxz/Lab2.git
+git clone 'https://github.com/ukioxz/Lab2.git'
 ```
 3. To run tests:
 
