@@ -65,21 +65,13 @@ class CircularList{
 
 
   findFirst(data){
-    let count = 0;
     let curEl = this.head;
     for(let i = 0; i < this.getLength(); i++){
-        if(i === data) return curEl.data;
+        if(curEl.data === data) return i;
 
         curEl = curEl.next;
     }
-    while(curEl){
-      if(data !== undefined && curEl.data === data){
-        return count;
-      }
-      count++;
-      curEl = curEl.next;
-    }
-    return null;
+    return -1;
   }
 
   get(index){
@@ -95,20 +87,12 @@ class CircularList{
   }
 
   findLast(data){
-    let count = this.getLength() - 1;
     let result = -1;
     let curEl = this.head;
     for(let i = 0; i < this.getLength(); i++){
-        if(i === data) result = i;
+        if(curEl.data === data) result = i;
 
         curEl = curEl.next;
-    }
-    while(curEl){
-      if(data !== undefined && curEl.data === data){
-        return count;
-      }
-      count--;
-      curEl = curEl.next;
     }
     return result;
   }
@@ -230,11 +214,11 @@ list2.append("W");
 //list.findFirst("A")
 //list.findLast("B")
 //console.log(list.findFirst("B"))
-//console.log(list.findLast("B"));
+/console.log(list.findLast("B"));
 //list.getLength();
 //list.deleteAll("A")
 //list.clear();
-list.insert(3, -1);
+//list.insert(3, -1);
 //console.log(list.delete(0))
 //console.log(list.findFirst("t"));
 //console.log(list.get(2))
