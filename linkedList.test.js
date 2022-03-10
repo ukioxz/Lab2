@@ -85,13 +85,17 @@ describe('Testing insert method', () => {
   const list = new CircularList();
   list.append('a');
   list.append('b');
-  list.insert('w', 0);
   test('Should return a new length of list', () => {
+    list.insert('w', 0);
     expect(list.getLength()).toBe(3);
   });
   test('Should insert value at position', () => {
     expect(list.get(0)).toBe('w');
     expect(list.get(1)).toBe('a');
     expect(list.get(2)).toBe('b');
+  });
+  test('Should throw an error if incorrect index', () => {
+    expect(() => list.insert('q', 10)).toThrow(Error);
+    expect(() => list.insert('q', 'hello')).toThrow(Error);
   });
 });

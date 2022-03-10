@@ -42,31 +42,25 @@ class CircularList{
     return counter;
   }
 
+  
   insert(element, index){
-    if (index < 0 || index > this.getLength())
-        return console.log("Please enter a valid index.");
-    else {
+    if (/*index < 0 ||*/ index > this.getLength() - 1 || typeof index != 'number'){
+        throw new Error("Please enter a valid index.");
+      }
         let node = new ListNode(element);
-        let curr, prev;
-        curr = this.head;
+        let curr = this.head;
+        let count = 0;
 
         if (index == 0) {
             node.next = this.head;
             this.head = node;
+            this.tail.next = node;
         } else {
-            curr = this.head;
-            let count = 0;
-
-            while (count < index) {
+            while (count < index - 1) {
                 count++;
-                prev = curr;
                 curr = curr.next;
             }
-
-            node.next = curr;
-            prev.next = node;
         }
-    }
 }
 
 
@@ -240,7 +234,7 @@ list2.append("W");
 //list.getLength();
 //list.deleteAll("A")
 //list.clear();
-//list.insert(3, 1);
+list.insert(3, -1);
 //console.log(list.delete(0))
 //console.log(list.findFirst("t"));
 //console.log(list.get(2))
@@ -251,7 +245,7 @@ list2.append("W");
 //console.log(list.get(0));
 //console.log(list.clone());
 
-list.extend(list2);
+//list.extend(list2);
 console.log(list.getLength())
 console.log(list);
 
