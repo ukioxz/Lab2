@@ -107,31 +107,17 @@ class CircularList{
     return newCircularList;
   }
 
-  deleteAll(key) {
-    if (this.head == null)
-    {
-      console.log("Empty linked list");
-      return;
-    }
-    let temp = this.head;
-    let prev = null;
-    if (temp.data == key)
-    {
-      if (temp.next == temp)
-      {
-        this.head = null;
-      }
-      else
-      {
-        while (temp.next != this.head)
-        {
-          temp = temp.next;
-        }
-        temp.next = this.head.next;
-        prev = this.head;
-        this.head = prev.next;
-      }
-    }
+  deleteAll(value) {
+    let tmp = this.head;
+     const startLength  = this.getLength();
+
+     for(let i = 0; i < startLength; i++){
+         if(tmp.data === value){
+             this.delete(i - (startLength - this.getLength()));
+         }
+
+         tmp = tmp.next;
+     }
   }
 
   delete(index){
@@ -144,25 +130,20 @@ class CircularList{
     if(index > this.getLength()){
       throw new Error('Index is bigger than length of list')
     }
-    let current = this.head;
-    let previous;
-    let count = 0;
+    let tmp = this.head;
+    let prev = this.tail;
 
     for(let i = 0; i < this.getLength(); i++){
-        if(i === index) return current.data;
+      if(i === index){
+        prev.next = tmp.next;
+        if(tmp === this.head) this.head = tmp.next;
+        if(tmp === this.tail) this.tail = prev;
 
-        current = current.next;
-    }
-
-    if(index === 0){
-      this.head = current.next;
-    } else {
-      while(count < index) {
-        count++;
-        previous = current;
-        current = current.next;
+          return tmp.data;
       }
-      previous.next = current.next;
+
+      prev = tmp;
+      tmp = tmp.next;
     }
   }
 
@@ -228,7 +209,7 @@ list2.append("W");
 //console.log(list.delete(0));
 //console.log(list.get(0));
 //console.log(list.clone());
-
+list.deleteAll("B");
 //list.extend(list2);
 console.log(list.getLength())
 console.log(list);

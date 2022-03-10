@@ -141,3 +141,21 @@ describe('Testing findLast method', () => {
     expect(list.findLast('T')).toBe(-1);
   });
 });
+
+describe('Testing deleteAll method', () => {
+  const list = new CircularList();
+  list.append('a');
+  list.append('b');
+  list.append('a');
+  list.append('c');
+  test('Should return a new length of the list', () => {
+    list.deleteAll('a');
+    expect(list.getLength()).toBe(2)
+  });
+  test('Should delete all nodes in the list', () => {
+    list.deleteAll('a');
+    expect(list.get(0)).toBe('b');
+    expect(list.get(1)).toBe('c');
+  });
+
+});
