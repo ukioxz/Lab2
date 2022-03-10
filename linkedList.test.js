@@ -80,3 +80,18 @@ describe('Testing clone method', () => {
     expect(list2.getLength()).toBe(list.getLength());
   });
 });
+
+describe('Testing insert method', () => {
+  const list = new CircularList();
+  list.append('a');
+  list.append('b');
+  list.insert('w', 0);
+  test('Should return a new length of list', () => {
+    expect(list.getLength()).toBe(3);
+  });
+  test('Should insert value at position', () => {
+    expect(list.get(0)).toBe('w');
+    expect(list.get(1)).toBe('a');
+    expect(list.get(2)).toBe('b');
+  });
+});
