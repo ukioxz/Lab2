@@ -99,3 +99,17 @@ describe('Testing insert method', () => {
     expect(() => list.insert('q', 'hello')).toThrow(Error);
   });
 });
+
+describe('Testing get method', () => {
+  const list = new CircularList();
+  list.append('a');
+  list.append('b');
+  test('Should throw an error if incorrect index', () => {
+    expect(() => list.get(-1)).toThrow(Error);
+    expect(() => list.get(4)).toThrow(Error);
+    expect(() => list.get('nya')).toThrow(Error);
+  });
+  test('Should return a value of node', () => {
+    expect(list.get(1)).toBe('b');
+  });
+});

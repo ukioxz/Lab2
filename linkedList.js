@@ -42,7 +42,7 @@ class CircularList{
     return counter;
   }
 
-  
+
   insert(element, index){
     if (/*index < 0 ||*/ index > this.getLength() - 1 || typeof index != 'number'){
         throw new Error("Please enter a valid index.");
@@ -83,7 +83,7 @@ class CircularList{
   }
 
   get(index){
-    if (index < 0 || index >= this.getLength()) {
+    if (index < 0 || index >= this.getLength() || typeof index != 'number') {
       throw new Error("Invalid index");
     }
     let tmp = this.head;
