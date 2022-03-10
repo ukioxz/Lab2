@@ -1,5 +1,5 @@
 # Lab2
-#Unit tests. CI
+# Unit tests. CI
 
 ## Variant of laboratory work
 
